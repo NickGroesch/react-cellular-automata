@@ -51,35 +51,42 @@ function Canvas(props) {
         mutable.splice(index, 1, !mutable[index])
         setPresent(mutable)
     }
-    return (
-        <div>
-            <button onClick={iterate}>Advance</button>
-            <div id="present">
-                {present.map((bool, index) => <div style={{
+    return (<div>
+        <button onClick={iterate}>Advance</button>
+        <input onKeyDown={(e) => {
+            // console.log(e.key)
+            if (e.key == "Enter") {
+                console.log(e.target.value)
+            }
+            if (!["c", "v", "Backspace", "ArrowLeft", "ArrowRight", "Delete"].includes(e.key)) e.preventDefault()
+
+        }}></input>
+        <div id="present">
+            {present.map((bool, index) => <div style={{
+                height: '12.5vh',
+                width: '10vw',
+                backgroundColor:
+                    bool ? 'blue' : 'green',
+                float: 'left',
+                borderColor: "black",
+                borderWidth: "3px"
+            }}
+                onClick={() => toggleBool(index)} />)}
+        </div>
+        <div id="past">
+            {past.map(rowArray => (<div style={{ height: '12.5vh' }}>
+                {rowArray.map(bool => <div style={{
                     height: '12.5vh',
                     width: '10vw',
                     backgroundColor:
-                        bool ? 'blue' : 'green',
+                        bool ? 'lightBlue' : 'lightGreen',
                     float: 'left',
                     borderColor: "black",
                     borderWidth: "3px"
-                }}
-                    onClick={() => toggleBool(index)} />)}
-            </div>
-            <div id="past">
-                {past.map(rowArray => (<div style={{ height: '12.5vh' }}>
-                    {rowArray.map(bool => <div style={{
-                        height: '12.5vh',
-                        width: '10vw',
-                        backgroundColor:
-                            bool ? 'lightBlue' : 'lightGreen',
-                        float: 'left',
-                        borderColor: "black",
-                        borderWidth: "3px"
-                    }} />)}
-                </div>))}
-            </div>
+                }} />)}
+            </div>))}
         </div>
+    </div >
     );
 }
 
