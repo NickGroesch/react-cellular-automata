@@ -46,7 +46,11 @@ function Canvas(props) {
         const newPastLim = newPast.slice(0, newPast.length > 7 ? 7 : newPast.length)
         setPast(newPastLim)
     }
-    const toogleBool = () => { }
+    const toggleBool = (index) => {
+        const mutable = [...present]
+        mutable.splice(index, 1, !mutable[index])
+        setPresent(mutable)
+    }
     return (
         <div>
             <button onClick={iterate}>Advance</button>
@@ -60,7 +64,7 @@ function Canvas(props) {
                     borderColor: "black",
                     borderWidth: "3px"
                 }}
-                    onClick={toogleBool(index)} />)}
+                    onClick={() => toggleBool(index)} />)}
             </div>
             <div id="past">
                 {past.map(rowArray => (<div style={{ height: '12.5vh' }}>
