@@ -80,7 +80,13 @@ function Canvas(props) {
             </div>
         </div >
         <div style={{ zIndex: 1, position: 'fixed' }}>
-            <div style={{ zIndex: 1, position: "absolute", left: "25vw", top: '25vh', borderRadius: "50%", backgroundColor: "pink", width: "25vw" }}>
+            <div style={{
+                zIndex: 1, position: "absolute",
+                left: "25vw", top: '25vh',
+                width: "25vw",
+                //borderRadius: "50%",
+                backgroundColor: "#ff000077",
+            }}>
                 <button onClick={iterate}>Advance Automaton</button>
                 <p>please only c's and v's : the only letters coders need since stack overflow</p>
                 <p>
